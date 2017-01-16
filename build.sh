@@ -7,7 +7,10 @@ cd /go/src/github.com/gliderlabs/logspout
 export GOPATH=/go
 go get
 go build -ldflags "-X main.Version=$1" -o /bin/logspout
-apk del go git mercurial build-base
+
+# DY: do not delete the build deps to speedup the child images build
+#apk del go git mercurial build-base
+
 rm -rf /go
 rm -rf /var/cache/apk/*
 
